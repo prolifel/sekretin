@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "414612138262",
+    "firebase_url": "https://sekretin-id.firebaseio.com",
+    "project_id": "sekretin-id",
+    "storage_bucket": "sekretin-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414612138262:android:208a1bc2b37eae00b20837",
+        "android_client_info": {
+          "package_name": "com.prolifel.sekretin2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414612138262-88v76a2lbjl631uumicuprct3qdg2opp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prolifel.sekretin2",
+            "certificate_hash": "e71f432d3925c03cd087f84091c9b3b2b7b45a04"
+          }
+        },
+        {
+          "client_id": "414612138262-g4qp9ujb1pr89jqp1b7k2gdlk1km2f17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADuDs0fRewtKxcXmTg_Oddn06YOMJ0UfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414612138262-g4qp9ujb1pr89jqp1b7k2gdlk1km2f17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

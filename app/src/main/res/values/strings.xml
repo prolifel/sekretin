@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sekretin</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="password">Kata Sandi</string>
+    <string name="login_halo">Halo,</string>
+    <string name="login_untuk">Log in untuk melanjutkan</string>
+    <string name="login">Log In</string>
+
+
+</resources>

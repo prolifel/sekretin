@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="214dp"
+    android:height="50dp"
+    android:viewportWidth="214"
+    android:viewportHeight="50"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M0 0H214V50H0V0Z"
+            />
+
+    </group>
+
+    <item android:drawable="@drawable/sekretin_logo_teks" />
+
+</shape>
