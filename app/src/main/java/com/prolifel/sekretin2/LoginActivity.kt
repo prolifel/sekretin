@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         val buttonLogin = findViewById<Button>(R.id.button_login)
         val email = findViewById<EditText>(R.id.login_email)
         val password = findViewById<EditText>(R.id.login_password)
-        val intent = Intent(this@LoginActivity, SignedIn::class.java)
+        val intent = Intent(this@LoginActivity, HomeScreen::class.java)
 
         // Logic buat Log In
         buttonLogin.setOnClickListener(View.OnClickListener {
