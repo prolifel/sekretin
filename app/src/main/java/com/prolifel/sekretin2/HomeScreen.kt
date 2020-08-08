@@ -6,23 +6,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeScreen : AppCompatActivity() {
-    private lateinit var rvHeroes: RecyclerView
+    private lateinit var rvApp: RecyclerView
     private var list: ArrayList<Aplikasi> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
-        rvHeroes = findViewById(R.id.rv_heroes)
-        rvHeroes.setHasFixedSize(true)
+        rvApp = findViewById(R.id.rv_app)
+        rvApp.setHasFixedSize(true)
 
         list.addAll(AplikasiData.listData)
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
-        rvHeroes.layoutManager = LinearLayoutManager(this)
+        rvApp.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListAplikasiAdapter(list)
-        rvHeroes.adapter = listHeroAdapter
+        rvApp.adapter = listHeroAdapter
     }
 }
