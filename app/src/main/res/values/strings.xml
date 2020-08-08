@@ -6,6 +6,7 @@
     <string name="login_halo">Halo,</string>
     <string name="login_untuk">Log in untuk melanjutkan</string>
     <string name="login">Log In</string>
-
+    <string name="card_appName">Nama Aplikasi</string>
+    <string name="card_email">Email</string>
 
 </resources>

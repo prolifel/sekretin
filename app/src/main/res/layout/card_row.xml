@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="4dp"
+    card_view:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/img_logoApp"
+            android:layout_width="80dp"
+            android:layout_height="57dp"
+            android:src="#FFFF" />
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/img_logoApp"
+            android:layout_toRightOf="@id/img_logoApp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="@string/card_appName" />
+        <TextView
+            android:id="@+id/tv_item_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_name"
+            android:layout_marginLeft="16dp"
+            android:layout_toEndOf="@id/img_logoApp"
+            android:layout_toRightOf="@id/img_logoApp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="@string/card_email" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
