@@ -13,16 +13,20 @@ class HomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
 
+        setSupportActionBar(findViewById(R.id.homeToolbar))
+
+        // Add list 
         rvApp = findViewById(R.id.rv_app)
         rvApp.setHasFixedSize(true)
 
+        // Show list
         list.addAll(AplikasiData.listData)
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
         rvApp.layoutManager = LinearLayoutManager(this)
-        val listHeroAdapter = ListAplikasiAdapter(list)
-        rvApp.adapter = listHeroAdapter
+        val listAppAdapter = ListAplikasiAdapter(list)
+        rvApp.adapter = listAppAdapter
     }
 }
