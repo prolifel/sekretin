@@ -8,5 +8,7 @@
     <string name="login">Log In</string>
     <string name="card_appName">Nama Aplikasi</string>
     <string name="card_email">Email</string>
+    <string name="developer_name">Clement Prolifel Priyatama</string>
+    <string name="developer_email">clementprolifel@gmail.com</string>
 
 </resources>
