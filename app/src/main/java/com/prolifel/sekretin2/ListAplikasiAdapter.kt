@@ -5,11 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 class ListAplikasiAdapter(val listApp: ArrayList<Aplikasi>) : RecyclerView.Adapter<ListAplikasiAdapter.ListViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val view: View = LayoutInflater.from(viewGroup.context).inflate(R.layout.card_row, viewGroup, false)
@@ -23,7 +30,12 @@ class ListAplikasiAdapter(val listApp: ArrayList<Aplikasi>) : RecyclerView.Adapt
             .apply(RequestOptions().override(200, 140))
             .into(holder.imgIcon)
         holder.tvName.text = app.nama
-        holder.tvDetail.text = app.email
+        holder.tvEmail.text = app.email
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(listApp[holder.adapterPosition])
+        }
+        
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +44,11 @@ class ListAplikasiAdapter(val listApp: ArrayList<Aplikasi>) : RecyclerView.Adapt
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
-        var tvDetail: TextView = itemView.findViewById(R.id.tv_item_detail)
+        var tvEmail: TextView = itemView.findViewById(R.id.tv_item_email)
         var imgIcon: ImageView = itemView.findViewById(R.id.img_logoApp)
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Aplikasi)
     }
 }

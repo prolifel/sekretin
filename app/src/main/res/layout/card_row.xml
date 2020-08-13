@@ -35,7 +35,7 @@
             android:textStyle="bold"
             tools:text="@string/card_appName" />
         <TextView
-            android:id="@+id/tv_item_detail"
+            android:id="@+id/tv_item_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_item_name"

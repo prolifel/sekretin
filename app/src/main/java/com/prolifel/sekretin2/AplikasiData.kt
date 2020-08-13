@@ -43,6 +43,21 @@ object AplikasiData {
         R.drawable.grab,
         R.drawable.shopee)
 
+    private val aplikasiPass = arrayOf(
+        /*Instagram*/   "SepuJ2vNTx",
+        /*Twitter*/     "wSD2VfUVWR",
+        /*Discord*/     "F2ZX8SzMhg",
+        /*Gmail*/       "85red2rXKH",
+        /*LinkedIn*/    "phH9WH8E3t",
+        /*Pinterest*/   "PnV99ZdSyL",
+        /*Tik Tok*/     "zFpH6LNLPb",
+        /*LINE*/        "zXgNEQKG8D",
+        /*Tokopedia*/   "Z7L2f3rLaV",
+        /*Gojek*/       "KS8fTMKpbQ",
+        /*Grab*/        "CPFCE6Sh5u",
+        /*Shopee*/      "b8NCAcwrQq"
+    )
+
     val listData: ArrayList<Aplikasi>
         get() {
             val list = arrayListOf<Aplikasi>()
@@ -51,6 +66,7 @@ object AplikasiData {
                 app.nama = aplikasiName[position]
                 app.email = aplikasiEmail[position]
                 app.icon = aplikasiIcon[position]
+                app.pass = aplikasiPass[position]
                 list.add(app)
             }
             return list

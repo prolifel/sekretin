@@ -10,5 +10,7 @@
     <string name="card_email">Email</string>
     <string name="developer_name">Clement Prolifel Priyatama</string>
     <string name="developer_email">clementprolifel@gmail.com</string>
+    <string name="data_received" />
+    <string name="icon_received" />
 
 </resources>
