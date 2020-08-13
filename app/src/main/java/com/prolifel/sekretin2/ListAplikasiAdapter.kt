@@ -27,7 +27,7 @@ class ListAplikasiAdapter(val listApp: ArrayList<Aplikasi>) : RecyclerView.Adapt
         val app = listApp[position]
         Glide.with(holder.itemView.context)
             .load(app.icon)
-            .apply(RequestOptions().override(200, 140))
+            .apply(RequestOptions().override(150, 150))
             .into(holder.imgIcon)
         holder.tvName.text = app.nama
         holder.tvEmail.text = app.email

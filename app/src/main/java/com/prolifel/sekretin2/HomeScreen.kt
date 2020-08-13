@@ -69,11 +69,11 @@ class HomeScreen : AppCompatActivity() {
     
     // select salah satu card, intent ke detail
     private fun showSelectedApp(app: Aplikasi) {
-        val moveWithDataIntent = Intent(this@HomeScreen, DetailActivity::class.java)
-        moveWithDataIntent.putExtra(DetailActivity.DETAIL_NAMA, "${app.nama}")
-        moveWithDataIntent.putExtra(DetailActivity.DETAIL_EMAIL, "${app.email}")
-        moveWithDataIntent.putExtra(DetailActivity.DETAIL_PASS, "${app.pass}")
-        moveWithDataIntent.putExtra(DetailActivity.DETAIL_ICON, app.icon)
-        startActivity(moveWithDataIntent)
+        val intentDetail = Intent(this@HomeScreen, DetailActivity::class.java)
+        intentDetail.putExtra(DetailActivity.DETAIL_NAMA, app.nama)
+        intentDetail.putExtra(DetailActivity.DETAIL_EMAIL, app.email)
+        intentDetail.putExtra(DetailActivity.DETAIL_PASS, app.pass)
+        intentDetail.putExtra(DetailActivity.DETAIL_ICON, app.icon)
+        startActivity(intentDetail)
     }
 }

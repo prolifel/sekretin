@@ -12,5 +12,10 @@
     <string name="developer_email">clementprolifel@gmail.com</string>
     <string name="data_received" />
     <string name="icon_received" />
+    <string name="detail_email">Email</string>
+    <string name="String_password">Password</string>
+    <string name="detail_password">Password</string>
+    <string name="detail_appName">Nama Aplikasi</string>
+    <string name="salin_password">Salin Password ke Clipboard</string>
 
 </resources>
