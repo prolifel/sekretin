@@ -9,6 +9,19 @@
 pre-commit install
 ```
 
+**Configuration** (`.pre-commit-config.yaml`):
+```yaml
+repos:
+  - repo: local
+    hooks:
+      - id: secret-scan
+        name: Scan for secrets
+        entry: bash -c 'curl -sSL https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh | bash -s -- --staged --exit-code 1'
+        language: system
+        pass_filenames: false
+        always_run: true
+```
+
 **Done!** Every `git commit` will now scan for secrets automatically.
 
 **Test it:**
@@ -30,6 +43,26 @@ git push
 ```
 
 The `secret-detection` job will run automatically on every push.
+
+**Configuration** (`.gitlab-ci.yml`):
+```yaml
+stages:
+  - test
+  - secret-detection
+
+secret_detection:
+  stage: secret-detection
+  image: alpine:latest
+  allow_failure: false
+  before_script:
+    - apk add --no-cache bash git curl
+    - curl -sSL "https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh" -o /tmp/secret-scan.sh
+    - chmod +x /tmp/secret-scan.sh
+  script:
+    - /tmp/secret-scan.sh --all --exit-code 1 --verbose
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+```
 
 ---
 
