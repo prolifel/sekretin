@@ -1,50 +1,54 @@
-# Secret Scan Setup Guide
+# sekretin
 
-## Quick Setup
+## quick setup
 
-### 1. Local Development (Pre-commit)
+### 1. local development (pre-commit)
 
-**Install:**
+**install:**
+
 ```bash
 pre-commit install
 ```
 
-**Configuration** (`.pre-commit-config.yaml`):
+**configuration** (`.pre-commit-config.yaml`):
+
 ```yaml
 repos:
   - repo: local
     hooks:
       - id: secret-scan
-        name: Scan for secrets
-        entry: bash -c 'curl -sSL https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh | bash -s -- --staged --exit-code 1'
+        name: scan for secrets
+        entry: bash -c 'curl -ssl https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh | bash -s -- --staged --exit-code 1'
         language: system
         pass_filenames: false
         always_run: true
 ```
 
-**Done!** Every `git commit` will now scan for secrets automatically.
+**done!** every `git commit` will now scan for secrets automatically.
 
-**Test it:**
+**test it:**
+
 ```bash
-echo "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE" > test.txt
+echo "aws_access_key_id=akiaiosfodnn7example" > test.txt
 git add test.txt
 git commit -m "test"
-# Commit will be blocked
+# commit will be blocked
 ```
 
 ---
 
-### 2. GitLab CI
+### 2. gitlab ci
 
-The `.gitlab-ci.yml` is already configured. Just push to GitLab:
+the `.gitlab-ci.yml` is already configured. just push to gitlab:
 
 ```bash
 git push
 ```
 
-The `secret-detection` job will run automatically on every push.
+the `secret-detection` job will run automatically on every push.
 
-**Configuration** (`.gitlab-ci.yml`):
+**configuration** (`.gitlab-ci.yml`):
+
 ```yaml
 stages:
   - test
@@ -56,68 +60,59 @@ secret_detection:
   allow_failure: false
   before_script:
     - apk add --no-cache bash git curl
-    - curl -sSL "https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh" -o /tmp/secret-scan.sh
+    - curl -ssl "https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh" -o /tmp/secret-scan.sh
     - chmod +x /tmp/secret-scan.sh
   script:
     - /tmp/secret-scan.sh --all --exit-code 1 --verbose
   rules:
-    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $ci_pipeline_source == "push"
 ```
 
 ---
 
-## How It Works
+## detected secrets
 
-| Component | What It Does |
-|-----------|--------------|
-| Pre-commit | Scans staged files before each commit |
-| GitLab CI | Scans entire git history on every push |
+- aws access key
+- aws secret key
+- github token
+- github oauth
+- github app token
+- github refresh token
+- gitlab token
+- generic api key
+- private key
+- jwt
+- gcp api key
+- gcp service account
+- gcp oauth token
+- alibaba access key id
+- alibaba secret key
+- amazon oauth client id
+- anthropic api key
+- artifactory api key
+- artifactory identity token
+- atlassian api key
+- atlassian api token
+- atlassian user api token
+- aws bedrock key
+- aws bedrock short lived key
+- azure api management gateway key
+- azure api management direct key
+- azure entra client secret
+- azure entra client id token
+- azure functions api key
+- azure openai api key
+- azure personal access token
+- bitbucket client id
+- bitbucket client secret
+- datadog api key
+- discord api key
+- discord client id
+- discord client secret
+- docker personal access token
+- gcp vertex express mode key
+- gitlab cicd job token
+- gitlab deploy token
+- gitlab feature flags client token
 
-Both fetch `secret-scan.sh` from: `https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.sh`
-
----
-
-## Detected Secrets
-
-- AWS Access Keys (`AKIA...`)
-- AWS Secret Keys (40 chars)
-- GitHub Tokens (`ghp_`, `gho_`, `ghu_`, `ghs_`, `ghr_`)
-- GitLab Tokens (`glpat-...`)
-- API Keys
-- Private Keys
-- JWTs
-
-Secrets are **masked** in output (e.g., `AKIA************MPLE`).
-
----
-
-## Troubleshooting
-
-**Commit blocked but no secrets?**
-- Check the scan output for the detected pattern
-- False positives can happen - review the matched content
-
-**404 Error?**
-- Ensure `prolifel/sekretin` repo is public
-- Verify `secret-scan.sh` exists at repo root
-
-**Reinstall hooks:**
-```bash
-pre-commit uninstall && pre-commit install
-```
-
----
-
-## For Administrators
-
-To host your own scanner:
-
-1. Upload `secret-scan.sh` to a public GitHub repo
-2. Update URLs in:
-   - `.pre-commit-config.yaml` (line 6)
-   - `.gitlab-ci.yml` (line 11)
-
-CDN URL format:
-```
-https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/secret-scan.sh
-```
+secrets are **masked** in output (e.g., `akia************mple`).
