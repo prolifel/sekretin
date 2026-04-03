@@ -2,7 +2,7 @@
 
 ## quick setup
 
-### 1. local development (pre-commit)
+### 1. pre-commit (macos/linux)
 
 **install:**
 
@@ -24,8 +24,6 @@ repos:
         always_run: true
 ```
 
-**done!** every `git commit` will now scan for secrets automatically.
-
 **test it:**
 
 ```bash
@@ -37,15 +35,26 @@ git commit -m "test"
 
 ---
 
-### 2. gitlab ci
+### 2. pre-commit (powershell)
 
-the `.gitlab-ci.yml` is already configured. just push to gitlab:
+**setup for PowerShell users:**
 
-```bash
-git push
+```powershell
+# Add to your .pre-commit-config.yaml
+repos:
+  - repo: local
+    hooks:
+      - id: secret-scan
+        name: scan for secrets
+        entry: pwsh -NoProfile -NonInteractive -Command "& { Invoke-Expression (Invoke-RestMethod 'https://cdn.jsdelivr.net/gh/prolifel/sekretin@main/secret-scan.ps1') --staged --exit-code 1 }"
+        language: system
+        pass_filenames: false
+        always_run: true
 ```
 
-the `secret-detection` job will run automatically on every push.
+---
+
+### 3. gitlab ci
 
 **configuration** (`.gitlab-ci.yml`):
 
