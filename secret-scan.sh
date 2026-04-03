@@ -44,7 +44,7 @@ while [ $# -gt 0 ]; do
 done
 
 # Secret patterns (id:regex)
-PATTERN_COUNT=10
+PATTERN_COUNT=42
 
 get_pattern_id() {
     case $1 in
@@ -58,6 +58,38 @@ get_pattern_id() {
         7) echo "generic-api-key" ;;
         8) echo "private-key" ;;
         9) echo "jwt" ;;
+        10) echo "gcp-api-key" ;;
+        11) echo "gcp-service-account" ;;
+        12) echo "gcp-oauth-token" ;;
+        13) echo "alibaba-access-key-id" ;;
+        14) echo "alibaba-secret-key" ;;
+        15) echo "amazon-oauth-client-id" ;;
+        16) echo "anthropic-api-key" ;;
+        17) echo "artifactory-api-key" ;;
+        18) echo "artifactory-identity-token" ;;
+        19) echo "atlassian-api-key" ;;
+        20) echo "atlassian-api-token" ;;
+        21) echo "atlassian-user-api-token" ;;
+        22) echo "aws-bedrock-key" ;;
+        23) echo "aws-bedrock-short-lived-key" ;;
+        24) echo "azure-api-management-gateway-key" ;;
+        25) echo "azure-api-management-direct-key" ;;
+        26) echo "azure-entra-client-secret" ;;
+        27) echo "azure-entra-client-id-token" ;;
+        28) echo "azure-functions-api-key" ;;
+        29) echo "azure-openai-api-key" ;;
+        30) echo "azure-personal-access-token" ;;
+        31) echo "bitbucket-client-id" ;;
+        32) echo "bitbucket-client-secret" ;;
+        33) echo "datadog-api-key" ;;
+        34) echo "discord-api-key" ;;
+        35) echo "discord-client-id" ;;
+        36) echo "discord-client-secret" ;;
+        37) echo "docker-personal-access-token" ;;
+        38) echo "gcp-vertex-express-mode-key" ;;
+        39) echo "gitlab-cicd-job-token" ;;
+        40) echo "gitlab-deploy-token" ;;
+        41) echo "gitlab-feature-flags-client-token" ;;
     esac
 }
 
@@ -73,6 +105,38 @@ get_pattern() {
         7) echo '(api[_-]?key|apikey|api[_-]?secret)[^a-zA-Z0-9].{0,20}[0-9a-zA-Z]{16,}' ;;
         8) echo '-----BEGIN [A-Z ]*PRIVATE KEY-----' ;;
         9) echo 'eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*' ;;
+        10) echo 'AIza[0-9A-Za-z_-]{35}' ;;
+        11) echo '"type"[[:space:]]*:[[:space:]]*"service_account"' ;;
+        12) echo 'ya29\.[0-9A-Za-z_-]+' ;;
+        13) echo 'LTAI[a-zA-Z0-9]{17}' ;;
+        14) echo 'alibaba(.{0,20})[0-9a-zA-Z]{30}' ;;
+        15) echo 'amzn1\.application-oa2\.[0-9a-zA-Z]{3,}' ;;
+        16) echo 'sk-ant-[a-zA-Z0-9_-]{95}' ;;
+        17) echo 'AKCp8[0-9a-zA-Z]{78}' ;;
+        18) echo 'AKCp6[0-9a-zA-Z]{78}' ;;
+        19) echo 'ATATT3[A-Za-z0-9_-]{200,}' ;;
+        20) echo 'ATAT[0-9a-zA-Z]{200,}' ;;
+        21) echo '[a-zA-Z0-9]{24}:[a-zA-Z0-9]{24}' ;;
+        22) echo 'aws/bedrock[0-9a-zA-Z]{40}' ;;
+        23) echo 'bedrock-runtime[0-9a-zA-Z/-]{20,}' ;;
+        24) echo 'AzureML[a-zA-Z0-9]{32}' ;;
+        25) echo 'amlsig[0-9a-zA-Z]{64}' ;;
+        26) echo '[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}' ;;
+        27) echo 'azure-ml[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}' ;;
+        28) echo '[a-zA-Z0-9]{32}-[a-zA-Z0-9]{8}' ;;
+        29) echo 'azureopenai[0-9a-zA-Z]{32,}' ;;
+        30) echo 'pat\.[a-zA-Z0-9]{32,}' ;;
+        31) echo 'bitbucket[0-9a-zA-Z]{20,}' ;;
+        32) echo 'bitbucket_secret[0-9a-zA-Z]{32,}' ;;
+        33) echo '[0-9a-f]{32}' ;;
+        34) echo '[a-zA-Z0-9_-]{32}\.[a-zA-Z0-9_-]{32}\.[a-zA-Z0-9_-]{32}' ;;
+        35) echo 'discord[0-9a-zA-Z]{16,}' ;;
+        36) echo '[a-zA-Z0-9]{32}' ;;
+        37) echo 'dckr_pat_[a-zA-Z0-9]{59}' ;;
+        38) echo 'vertex[0-9a-zA-Z]{32,}' ;;
+        39) echo 'glcbt-[0-9a-zA-Z]{20,}' ;;
+        40) echo 'gldt-[0-9a-zA-Z]{20,}' ;;
+        41) echo 'glffct-[0-9a-zA-Z]{20,}' ;;
     esac
 }
 
